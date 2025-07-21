@@ -4,9 +4,12 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 500); })
+const mockContactApi = () =>
+  new Promise((resolve) => {
+    setTimeout(resolve, 500);
+  });
 
-const Form = ({ onSuccess, onError }) => {
+const Form = ({ onSuccess = () => null, onError = () => null }) => {
   const [sending, setSending] = useState(false);
   const sendContact = useCallback(
     async (evt) => {
@@ -56,11 +59,12 @@ const Form = ({ onSuccess, onError }) => {
 Form.propTypes = {
   onError: PropTypes.func,
   onSuccess: PropTypes.func,
-}
+};
 
-Form.defaultProps = {
-  onError: () => null,
-  onSuccess: () => null,
-}
+// Form.defaultProps = {
+//   onError: () => null,
+//   onSuccess: () => null,
+// }
+// suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction Form
 
 export default Form;

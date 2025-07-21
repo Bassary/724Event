@@ -7,18 +7,21 @@ import "./style.scss";
 
 const Select = ({
   selection,
-  onChange,
-  name,
-  titleEmpty,
-  label,
+  onChange = () => null,
+  name = "select",
+  titleEmpty = false,
+  label = "",
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
+  // const [value, setValue] = useState();
+  const [value, setValue] = useState(null);
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    // onChange();
+    onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    // setCollapsed(newValue);
+    setCollapsed(true);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
@@ -40,6 +43,7 @@ const Select = ({
                 <li key={s} onClick={() => changeValue(s)}>
                   <input
                     defaultChecked={value === s}
+                    // checked={value === s}
                     name="selected"
                     type="radio"
                   />{" "}
@@ -88,14 +92,15 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
-Select.defaultProps = {
-  onChange: () => null,
-  titleEmpty: false,
-  label: "",
-  type: "normal",
-  name: "select",
-}
+// Select.defaultProps = {
+//   onChange: () => null,
+//   titleEmpty: false,
+//   label: "",
+//   type: "normal",
+//   name: "select",
+// };
+// suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction Select
 
 export default Select;

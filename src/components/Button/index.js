@@ -7,7 +7,13 @@ export const BUTTON_TYPES = {
   SUBMIT: 2,
 };
 
-const Button = ({ title, onClick, type, disabled, children }) => {
+const Button = ({
+  disabled = false,
+  onClick = () => null,
+  type = BUTTON_TYPES.DEFAULT,
+  title = "",
+  children = null,
+}) => {
   switch (type) {
     case BUTTON_TYPES.DEFAULT:
       return (
@@ -58,12 +64,14 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.node,
 };
-Button.defaultProps = {
-  disabled: false,
-  onClick: () => null,
-  type: BUTTON_TYPES.DEFAULT,
-  title: "",
-  children: null
-}
+
+// Button.defaultProps = {
+//   disabled: false,
+//   onClick: () => null,
+//   type: BUTTON_TYPES.DEFAULT,
+//   title: "",
+//   children: null
+// }
+// suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction Button
 
 export default Button;
