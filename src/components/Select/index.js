@@ -14,14 +14,14 @@ const Select = ({
   type = "normal",
 }) => {
   // const [value, setValue] = useState();
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState(null); // ajout de la valeur null afin de mieux gérer les erreurs
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
     // onChange();
-    onChange(newValue);
+    onChange(newValue); // ajout de la valeur newValue
     setValue(newValue);
     // setCollapsed(newValue);
-    setCollapsed(true);
+    setCollapsed(true); // changement de la valeur newValue par true
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
@@ -43,7 +43,6 @@ const Select = ({
                 <li key={s} onClick={() => changeValue(s)}>
                   <input
                     defaultChecked={value === s}
-                    // checked={value === s}
                     name="selected"
                     type="radio"
                   />{" "}
@@ -102,5 +101,6 @@ Select.propTypes = {
 //   name: "select",
 // };
 // suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction Select
+// Raison : Warning dans la console précisant que la prise en charge de defaultProps sera supprimée des composants dans une version ultérieure
 
 export default Select;

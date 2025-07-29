@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import { getMonth } from "../../helpers/Date";
+import { getMonth } from "../../helpers/Date"; // changement effectué dans Date
 
 import "./style.scss";
 
 const EventCard = ({
   imageSrc,
-  imageAlt,
+  imageAlt = "image",
   date = new Date(),
-  title,
+  title = "Default Title",
   label,
   small = false,
   ...props
@@ -32,7 +32,7 @@ EventCard.propTypes = {
   imageSrc: PropTypes.string.isRequired,
   imageAlt: PropTypes.string,
   date: PropTypes.instanceOf(Date).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   small: PropTypes.bool,
   label: PropTypes.string.isRequired,
 };
@@ -40,7 +40,7 @@ EventCard.propTypes = {
 // EventCard.defaultProps = {
 //   imageAlt: "image",
 //   small: false,
-// }
-// suppression du defaultProps
+// };
+// suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction EventCard
 
 export default EventCard;

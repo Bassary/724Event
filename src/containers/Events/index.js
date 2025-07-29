@@ -19,28 +19,24 @@ const EventList = () => {
   //     ? data?.events
   //     : data?.events) || []
   // ).filter((event, index) => {
-  //   if (
-  //     (currentPage - 1) * PER_PAGE <= index &&
-  //     PER_PAGE * currentPage > index
-  //   ) {
-  //     return true;
-  //   }
-  //   return false;
-  // });
 
+  // code modifier
   const filteredEvents = (
     (!type
       ? data?.events
       : data?.events.filter((event) => event.type === type)) || []
-  ).filter((event, index) => {
-    if (
-      (currentPage - 1) * PER_PAGE <= index &&
-      PER_PAGE * currentPage > index
-    ) {
-      return true;
-    }
-    return false;
-  });
+  ) // Ajout du filtre par événement. Sans ça, la fonction retourne toujours tous les types d'événement
+    .filter((_, index) => {
+      // remplacement de l'argument 'event' par '_' car 'event' ne sera jamais lu.
+      // En revanche, il est important de mettre quelque chose en argument pour représenter l'élément actuel du tableau. D'où l'utilisation du '_'
+      if (
+        (currentPage - 1) * PER_PAGE <= index &&
+        PER_PAGE * currentPage > index
+      ) {
+        return true;
+      }
+      return false;
+    });
 
   const changeType = (evtType) => {
     setCurrentPage(1);

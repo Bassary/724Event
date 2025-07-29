@@ -5,6 +5,7 @@ import "./style.scss";
 export const FIELD_TYPES = {
   INPUT_TEXT: 1,
   TEXTAREA: 2,
+  INPUT_EMAIL: 3, // ajout de l'input email pour le required adapter à l'email
 };
 
 const Field = ({
@@ -22,19 +23,34 @@ const Field = ({
           name={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required="required"
+        />
+      );
+      break;
+    case FIELD_TYPES.INPUT_EMAIL: // ajout de code
+      component = (
+        <input
+          type="email"
+          name={name}
+          placeholder={placeholder}
+          data-testid="field-testid"
+          required="required"
         />
       );
       break;
     case FIELD_TYPES.TEXTAREA:
-      component = <textarea name={name} data-testid="field-testid" />;
+      component = (
+        <textarea name={name} data-testid="field-testid" required="required" />
+      );
       break;
     default:
       component = (
         <input
-          type="text"
+          type={type}
           name={name}
           placeholder={placeholder}
           data-testid="field-testid"
+          required="required"
         />
       );
   }

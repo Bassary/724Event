@@ -28,7 +28,7 @@ const Modal = ({ opened = false, Content, children }) => {
 
 // Modal.defaultProps = {
 //   opened: false,
-// }suppression du defaultProps
+// } suppression du defaultProps ajout du props dans la fonction
 
 Modal.propTypes = {
   opened: PropTypes.bool,

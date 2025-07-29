@@ -19,5 +19,6 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": "off",
     "react/require-default-props": "off", // regle ajouter pour ne plus avoir d'erreur ESLint
+    "no-console": "off",
   },
 };
