@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Form from "./index";
+import { waitFor } from "@testing-library/react";
 
 describe("When Events is created", () => {
   it("a list of event card is displayed", async () => {
@@ -21,8 +22,10 @@ describe("When Events is created", () => {
           bubbles: true,
         })
       );
-      await screen.findByText("En cours");
       await screen.findByText("Envoyer");
+      await screen.findByText("En cours");
+
+      await screen.findByText(findTextInElement);
       expect(onSuccess).toHaveBeenCalled();
     });
   });

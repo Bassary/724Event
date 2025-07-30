@@ -30,7 +30,7 @@ const Field = ({
     case FIELD_TYPES.INPUT_EMAIL: // ajout de code
       component = (
         <input
-          type="email"
+          type="email" // type 'email' ajouter pour correspondre au required adapté
           name={name}
           placeholder={placeholder}
           data-testid="field-testid"

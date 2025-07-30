@@ -127,7 +127,7 @@ const Page = () => {
                   title={last?.title}
                   date={new Date(last?.date)}
                   small
-                  label={last?.type}
+                  label={last?.type} // modification du label de 'boom' à 'last?.type' pour avoir l'info correspondante
                 />
               )}
             </Modal>

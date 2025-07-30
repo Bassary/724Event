@@ -16,7 +16,7 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
 
   const [selectedValue, setSelectedValue] = useState(""); // code ajouté pour vérifier si l'utilisateur a sélectionné un motif
   const [isAlert, setIsAlert] = useState(false); // code ajouté pour créer un message si la personne n'a pas sélectionné le motif
-  const formRef = useRef(null); // code ajouté
+  const formRef = useRef(null); // code ajouté pour cibler le formulaire
 
   const sendContact = useCallback(
     async (evt) => {
@@ -35,12 +35,11 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
         setSending(false);
         setIsAlert(false); // ajout d'alerte si "Personel" ou "Entreprise" n'est pas selectionné
 
-        formRef.current.reset(); // ajout reste pour enlever les donner du formulaire après son envoie
+        formRef.current.reset(); // ajout 'reset()' pour enlever les donner du formulaire après son envoie
 
-        onSuccess(); // ajout onSuccess
+        onSuccess(true); // ajout onSuccess
       } catch (err) {
         setSending(false);
-        formRef.current.reset();
         onError(err);
       }
     },
@@ -56,6 +55,7 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
   return (
     <form onSubmit={sendContact} ref={formRef}>
       <div className="row">
+        {/* ajout d'un 'required' */}
         <div className="col">
           <Field
             placeholder=""
@@ -111,7 +111,7 @@ Form.propTypes = {
 // Form.defaultProps = {
 //   onError: () => null,
 //   onSuccess: () => null,
-// }
+// };
 // suppression du defaultProps et ajout des valeurs avec leurs paramètres directement dans la fonction Form
 
 export default Form;

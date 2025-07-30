@@ -42,6 +42,7 @@ const Slider = () => {
 
     return () => clearTimeout(timer);
   }, [index, byDateDesc.length]);
+  // console.log(byDateDesc);
 
   return (
     <div className="SlideCardList">
@@ -70,7 +71,7 @@ const Slider = () => {
           {/* ajout d'événement dans les paramètres */}
           {byDateDesc.map((event, radioIdx) => (
             <input
-              key={event.id} // changement de la clé pour une meilleure syntaxe
+              key={event.title} // changement de la clé pour une meilleure syntaxe
               type="radio"
               name="radio-button"
               checked={index === radioIdx} // changement de "idx" par "index" pour mettre à jour le boutton
