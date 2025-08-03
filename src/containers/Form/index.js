@@ -58,12 +58,18 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
         {/* ajout d'un 'required' */}
         <div className="col">
           <Field
-            placeholder=""
+            placeholder="Nom"
             label="Nom"
             required="required"
             type={FIELD_TYPES.INPUT_TEXT}
+            data-testid="Nom"
           />
-          <Field placeholder="" label="Prénom" required="required" />
+          <Field
+            placeholder=""
+            label="Prénom"
+            required="required"
+            data-testid="Prénom"
+          />
           {/* appel de l'alert si motif non selectionné */}
           {isAlert && (
             <div className="alert-empty">
@@ -78,6 +84,7 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
             label="Personel / Entreprise"
             type="large"
             titleEmpty
+            data-testid="Personel"
           />
 
           <Field
@@ -85,6 +92,7 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
             label="Email"
             required="required"
             type={FIELD_TYPES.INPUT_EMAIL}
+            data-testid="Email"
           />
           <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
             {sending ? "En cours" : "Envoyer"}
@@ -96,6 +104,7 @@ const Form = ({ onSuccess = () => null, onError = () => null }) => {
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
             required="required"
+            data-testid="Message"
           />
         </div>
       </div>

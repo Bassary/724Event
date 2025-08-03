@@ -13,6 +13,7 @@ const Field = ({
   label = "",
   name = "field-name",
   placeholder = "",
+  ...rest
 }) => {
   let component;
   switch (type) {
@@ -24,6 +25,7 @@ const Field = ({
           placeholder={placeholder}
           data-testid="field-testid"
           required="required"
+          {...rest}
         />
       );
       break;
@@ -35,12 +37,18 @@ const Field = ({
           placeholder={placeholder}
           data-testid="field-testid"
           required="required"
+          {...rest}
         />
       );
       break;
     case FIELD_TYPES.TEXTAREA:
       component = (
-        <textarea name={name} data-testid="field-testid" required="required" />
+        <textarea
+          name={name}
+          data-testid="field-testid"
+          required="required"
+          {...rest}
+        />
       );
       break;
     default:
@@ -51,6 +59,7 @@ const Field = ({
           placeholder={placeholder}
           data-testid="field-testid"
           required="required"
+          {...rest}
         />
       );
   }

@@ -12,6 +12,7 @@ const Select = ({
   titleEmpty = false,
   label = "",
   type = "normal",
+  ...rest
 }) => {
   // const [value, setValue] = useState();
   const [value, setValue] = useState(null); // ajout de la valeur null afin de mieux gérer les erreurs
@@ -45,6 +46,7 @@ const Select = ({
                     defaultChecked={value === s}
                     name="selected"
                     type="radio"
+                    {...rest}
                   />{" "}
                   {s}
                 </li>

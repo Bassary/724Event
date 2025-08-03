@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { DataProvider, api, useData } from "./index";
+import { act } from "react";
 
 describe("When a data context is created", () => {
   it("a call is executed on the events.json file", async () => {
